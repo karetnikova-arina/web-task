@@ -22,7 +22,7 @@ export const servicesApi = createApi({
       query: () => "/main.json",
       keepUnusedDataFor: 0.0001,
     }),
-    getService: builder.query<serviceType | undefined, number>({
+    getServiceById: builder.query<serviceType | undefined, number>({
       query: () => "/main.json",
       keepUnusedDataFor: 0.0001,
       transformResponse: (
@@ -32,6 +32,19 @@ export const servicesApi = createApi({
       ) => {
         return baseQueryReturnValue.services.find(
           (service) => service.id === id
+        );
+      },
+    }),
+    getServicesByCategoryId: builder.query<serviceType[], number>({
+      query: () => "/main.json",
+      keepUnusedDataFor: 0.0001,
+      transformResponse: (
+        baseQueryReturnValue: servicesResponseType,
+        _,
+        id
+      ) => {
+        return baseQueryReturnValue.services.filter(
+          (service) => service.categoryId === id
         );
       },
     }),

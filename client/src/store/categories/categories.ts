@@ -11,7 +11,7 @@ type servicesResponseType = {
 };
 
 export const categoriesApi = createApi({
-  reducerPath: "servicesApi",
+  reducerPath: "categoriesApi",
   baseQuery: baseQuery,
   endpoints: (builder) => ({
     getCategories: builder.query<servicesResponseType, void>({
