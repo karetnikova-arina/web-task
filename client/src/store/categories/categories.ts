@@ -14,7 +14,7 @@ export const categoriesApi = createApi({
   reducerPath: "servicesApi",
   baseQuery: baseQuery,
   endpoints: (builder) => ({
-    getCategories: builder.query<servicesResponseType, undefined>({
+    getCategories: builder.query<servicesResponseType, void>({
       query: () => "/categories.json",
       keepUnusedDataFor: 0.0001,
     }),
