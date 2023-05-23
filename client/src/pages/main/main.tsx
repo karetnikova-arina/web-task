@@ -50,19 +50,21 @@ export const MainPage: FC = () => {
           </Title>
           <div className="services">
             {categoriesData?.categories && (
-              <SegmentedControl
-                className="services__categories"
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                orientation="vertical"
-                data={categoriesData.categories.map((category) => ({
-                  label:
-                    categoriesDictionary[
-                      category.name as keyof typeof categoriesDictionary
-                    ],
-                  value: category.id.toString(),
-                }))}
-              />
+              <aside className="services__aside">
+                <SegmentedControl
+                  className="services__categories"
+                  value={selectedCategory}
+                  onChange={handleCategoryChange}
+                  orientation="vertical"
+                  data={categoriesData.categories.map((category) => ({
+                    label:
+                      categoriesDictionary[
+                        category.name as keyof typeof categoriesDictionary
+                      ],
+                    value: category.id.toString(),
+                  }))}
+                />
+              </aside>
             )}
 
             <ul className="services__list">

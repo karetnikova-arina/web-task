@@ -9,3 +9,10 @@
   justify-content: stretch;
   gap: 10px;
 }
+
+@media screen and (max-width: 520px) {
+  .reviews__form {
+    max-width: unset;
+    width: 100%;
+  }
+}

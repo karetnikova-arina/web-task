@@ -66,12 +66,6 @@
   margin-bottom: 40px;
 }
 
-.services__categories {
-  position: sticky;
-  top: 50%;
-  width: 120px;
-}
-
 .services__list {
   list-style-type: none;
   display: grid;
@@ -133,14 +127,25 @@
   transition: .3s;
 }
 
+.services__aside {
+  position: sticky;
+  top: 50%;
+  width: 120px;
+}
+
 @media screen and (max-width: 500px){
   .services {
     flex-direction: column;
   }
 
-  .services__categories {
+  .services__aside {
     position: relative;
     width: fit-content;
+    margin: 0 auto;
+    min-width: 200px;
+  }
+
+  .services__categories {
     margin: 0 auto;
     min-width: 200px;
   }
