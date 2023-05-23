@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 import { store } from "./store";
 import Routes from "./routes.tsx";
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           headings: { fontFamily: "Raleway, sans-serif" },
         }}
       >
+        <Notifications />
         <Routes />
       </MantineProvider>
     </Provider>

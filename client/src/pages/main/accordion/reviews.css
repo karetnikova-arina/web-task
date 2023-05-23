@@ -1,0 +1,11 @@
+.add_review__heading {
+  margin-top: 40px;
+}
+
+.reviews__form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 10px;
+}

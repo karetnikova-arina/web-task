@@ -1,14 +1,15 @@
 import { FC, useState } from "react";
+import { Link } from "react-router-dom";
 import { SegmentedControl, Text } from "@mantine/core";
 import { Title } from "@mantine/core";
 
 import { categoriesApi } from "../../store/categories";
 import { servicesApi } from "../../store/services";
-
 import { Header } from "../../components";
 
+import { Reviews } from "./accordion";
+import { ContactForm } from "./contact-form";
 import "./main.css";
-import { Link } from "react-router-dom";
 
 const categoriesDictionary = {
   all: "Все",
@@ -98,7 +99,18 @@ export const MainPage: FC = () => {
             </ul>
           </div>
         </section>
-        <section className="main__services"></section>
+        <section className="main__reviews">
+          <Title order={2} align="center" className="services__heading">
+            Отзывы о нас
+          </Title>
+          <Reviews />
+        </section>
+        <section className="main__services">
+          <Title order={2} align="center" className="services__heading">
+            Хотите записаться на прием? Сделайте это прямо <u>сейчас</u>
+          </Title>
+          <ContactForm />
+        </section>
       </main>
     </>
   );

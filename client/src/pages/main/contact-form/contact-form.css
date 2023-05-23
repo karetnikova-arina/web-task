@@ -1,0 +1,18 @@
+.contact_form__wrapper {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 10px;
+}
+
+.contact_form__date {
+  width: 100%;
+}
+
+@media screen and (max-width: 520px) {
+ .contact_form__wrapper {
+   max-width: unset;
+   width: 100%;
+ }
+}

@@ -51,6 +51,8 @@
 
 .main__services {
   min-height: calc(100dvh - 80px);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .services {
@@ -142,4 +144,9 @@
     margin: 0 auto;
     min-width: 200px;
   }
+}
+
+.main__reviews {
+  max-width: 1000px;
+  margin: 60px auto 60px;
 }
