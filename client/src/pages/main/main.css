@@ -130,7 +130,14 @@
 .services__aside {
   position: sticky;
   top: 50%;
-  width: 120px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.services__categories {
+  width: 100%;
 }
 
 @media screen and (max-width: 500px){

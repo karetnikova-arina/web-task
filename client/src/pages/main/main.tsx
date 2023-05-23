@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { SegmentedControl, Text } from "@mantine/core";
+import { Button, SegmentedControl, Text } from "@mantine/core";
 import { Title } from "@mantine/core";
 
 import { categoriesApi } from "../../store/categories";
@@ -20,13 +20,32 @@ const categoriesDictionary = {
   foot: "Ноги",
 };
 
+enum SortTypesEnum {
+  unset = 0,
+  ascending = 1,
+  descending = 2,
+}
+
+const sortTypeDictionary: Record<SortTypesEnum, string> = {
+  [SortTypesEnum.unset]: "По умолчанию",
+  [SortTypesEnum.ascending]: "По возрастанию",
+  [SortTypesEnum.descending]: "По убыванию",
+};
+
 export const MainPage: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("0");
   const { data: categoriesData } = categoriesApi.useGetCategoriesQuery();
   const { data: servicesData } = servicesApi.useGetServicesQuery();
+  const [sortType, setSortType] = useState<SortTypesEnum>(SortTypesEnum.unset);
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
+  };
+
+  const changeSortType = () => {
+    setSortType(
+      sortType === SortTypesEnum.descending ? SortTypesEnum.unset : sortType + 1
+    );
   };
 
   return (
@@ -64,6 +83,9 @@ export const MainPage: FC = () => {
                     value: category.id.toString(),
                   }))}
                 />
+                <Button onClick={changeSortType} color="dark">
+                  {sortTypeDictionary[sortType]}
+                </Button>
               </aside>
             )}
 
@@ -74,6 +96,13 @@ export const MainPage: FC = () => {
                     service.categoryId.toString() === selectedCategory ||
                     selectedCategory === "0"
                 )
+                .sort((serviceA, serviceB) => {
+                  if (sortType === SortTypesEnum.ascending)
+                    return serviceA.price - serviceB.price;
+                  if (sortType === SortTypesEnum.descending)
+                    return serviceB.price - serviceA.price;
+                  return serviceB.id - serviceA.id;
+                })
                 .map((service) => (
                   <li key={service.id} className="services__item">
                     <Title order={4} className="services__title">
