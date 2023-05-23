@@ -39,11 +39,11 @@ export const SearchModal: FC<SearchModalProps> = ({ open, onClose }) => {
           ?.filter((service) => {
             return service.name.toLowerCase().includes(search.toLowerCase());
           })
-          .map((category) => {
+          .map((service) => {
             return (
               <li>
                 <Text className="search_modal__link">
-                  <Link to={`service/${category.id}`}>{category.name}</Link>
+                  <Link to={`service/${service.id}`}>{service.name}</Link>
                 </Text>
               </li>
             );

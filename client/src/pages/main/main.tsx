@@ -1,11 +1,14 @@
 import { FC, useState } from "react";
+import { SegmentedControl, Text } from "@mantine/core";
 import { Title } from "@mantine/core";
 
-import "./main.css";
 import { categoriesApi } from "../../store/categories";
-import { SegmentedControl } from "@mantine/core";
 import { servicesApi } from "../../store/services";
+
 import { Header } from "../../components";
+
+import "./main.css";
+import { Link } from "react-router-dom";
 
 const categoriesDictionary = {
   all: "Все",
@@ -41,7 +44,7 @@ export const MainPage: FC = () => {
           />
         </section>
         <section className="main__services">
-          <Title order={2} align="center">
+          <Title order={2} align="center" className="services__heading">
             Наши услуги
           </Title>
           <div className="services">
@@ -69,9 +72,27 @@ export const MainPage: FC = () => {
                     selectedCategory === "0"
                 )
                 .map((service) => (
-                  <li key={service.id}>
-                    <Title order={4}>{service.name}</Title>
-                    <p>{service.description}</p>
+                  <li key={service.id} className="services__item">
+                    <Title order={4} className="services__title">
+                      {service.name}
+                    </Title>
+                    <img
+                      className="services__image"
+                      width="200"
+                      src={service.imageUrl}
+                      alt=""
+                    />
+                    <div className="services__text">
+                      <Text className="services__description">
+                        {service.description}
+                      </Text>
+                      <Text className="services__price">{service.price} ₽</Text>
+                      <Text className="services__link">
+                        <Link to={`service/${service.id}`}>
+                          Узнать больше...
+                        </Link>
+                      </Text>
+                    </div>
                   </li>
                 ))}
             </ul>
