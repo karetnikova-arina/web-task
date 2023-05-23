@@ -11,6 +11,22 @@
   margin: auto;
 }
 
+.promo__link {
+  margin-top: 10px;
+}
+
+.promo__link a {
+  padding: 8px 32px;
+  background: #25262B;
+  border-radius: 0.25rem;
+  color: white;
+  text-decoration: none;
+}
+
+.promo__link:hover a {
+  background: #1A1B1E;
+}
+
 @keyframes promo {
   0% {
     -webkit-filter: grayscale(100%);

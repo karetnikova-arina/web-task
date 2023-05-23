@@ -53,9 +53,14 @@ export const MainPage: FC = () => {
       <Header />
       <main className="main__container">
         <section className="main__promo">
-          <Title order={1}>
-            Успейте побывать в <u>лучшем</u> <br /> салоне красоты Москвы
-          </Title>
+          <div>
+            <Title order={1}>
+              Успейте побывать в <u>лучшем</u> <br /> салоне красоты Москвы
+            </Title>
+            <Text className="promo__link">
+              <a href="#reception">Записаться!</a>
+            </Text>
+          </div>
           <img
             width="320"
             className="promo__image"
@@ -136,7 +141,7 @@ export const MainPage: FC = () => {
           </Title>
           <Reviews />
         </section>
-        <section className="main__services">
+        <section className="main__services" id="reception">
           <Title order={2} align="center" className="services__heading">
             Хотите записаться на прием? Сделайте это прямо <u>сейчас</u>
           </Title>
