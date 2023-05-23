@@ -4,13 +4,15 @@
   align-items: center;
   padding: 0 20px;
   height: 80px;
+  max-width: 1000px;
+  margin:0 auto;
 }
 
 .header__contact {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
 }
 
 .contact__link {

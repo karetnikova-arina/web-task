@@ -1,0 +1,28 @@
+.search_modal__input {
+  width: 100%;
+}
+
+.search_modal__link:hover {
+  background: white;
+}
+
+.search_modal__link:hover {
+  background: rgb(241, 243, 245);
+  transition: .3s;
+  cursor: pointer;
+}
+
+.search_modal__list {
+  list-style-type: none;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search_modal__link a {
+  color: black;
+  text-decoration: none;
+  padding: 4px;
+  display: block;
+}

@@ -17,10 +17,15 @@
     filter: grayscale(100%);
     border-radius: 50% 20% / 40% 40%;;
   }
-  100% {
+  50% {
     -webkit-filter: grayscale(0%);
     filter: grayscale(0%);
     border-radius: 50% 30% / 20% 40%;;
+  }
+  100% {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    border-radius: 50% 20% / 40% 40%;;
   }
 }
 
@@ -32,8 +37,8 @@
   border-radius: 50% 20% / 40% 40%;;
 }
 
-.main__promo:hover .promo__image {
-  animation: promo ease-in-out 3s forwards alternate;
+.promo__image {
+  animation: promo 6s forwards infinite;
 }
 
 @media screen and (max-width: 650px) {
@@ -55,4 +60,8 @@
 .services__categories {
   position: sticky;
   top: 50%;
+}
+
+.services__list {
+
 }

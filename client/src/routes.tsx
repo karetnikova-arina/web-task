@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainPage, ServicePage } from "./pages";
-import { Header } from "./components";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +15,6 @@ const router = createBrowserRouter([
 function Routes() {
   return (
     <>
-      <Header />
       <RouterProvider router={router} />
     </>
   );

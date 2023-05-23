@@ -1,20 +1,54 @@
 import { FC } from "react";
 
-import { Text, Title } from "@mantine/core";
+import { Input, Text, Title } from "@mantine/core";
+import { IconSearch, IconPhone } from "@tabler/icons-react";
+
+import { SearchModal } from "../search-modal";
 
 import "./header.css";
-export const Header: FC = () => {
-  return (
-    <header className="header__container">
-      <Title className="header__logo" order={3}>
-        Beauty Salon
-      </Title>
+import { useDisclosure } from "@mantine/hooks";
+import { useViewportSize } from "@mantine/hooks";
 
-      <div className="header__contact">
-        <a className="contact__link" href="tel:+7 (999) 999-99-99">
-          <Text>+7 (999) 999-99-99</Text>
-        </a>
-      </div>
-    </header>
+export const Header: FC = () => {
+  const [opened, { open, close }] = useDisclosure();
+  const { width } = useViewportSize();
+  return (
+    <>
+      <header className="header__container">
+        <Title className="header__logo" order={3}>
+          Beauty Salon
+        </Title>
+
+        <div className="header__contact">
+          <Input
+            onClick={open}
+            value=""
+            icon={<IconSearch size={16} />}
+            placeholder="Поиск услуг"
+            radius="md"
+            styles={
+              width < 550
+                ? {
+                    wrapper: { width: "20px" },
+                    input: {
+                      paddingLeft: "25px!important",
+                    },
+                  }
+                : {}
+            }
+            width={100}
+            readOnly
+          />
+          <a className="contact__link" href="tel:+7 (999) 999-99-99">
+            {width < 550 ? (
+              <IconPhone color="#ced4da" style={{ marginLeft: "10px" }} />
+            ) : (
+              <Text>+7 (999) 999-99-99</Text>
+            )}
+          </a>
+        </div>
+      </header>
+      <SearchModal onClose={close} open={opened} />
+    </>
   );
 };
