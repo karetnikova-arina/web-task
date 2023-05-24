@@ -48,8 +48,13 @@ export const Reviews: FC = () => {
       description: "",
       content: "",
     },
+    validate: {
+      label: (value) => !value,
+      content: (value) => !value,
+      description: (value) => !value,
+    },
+    validateInputOnChange: true,
   });
-
   const handleSubmit = (values: {
     label: string;
     description: string;
@@ -83,17 +88,27 @@ export const Reviews: FC = () => {
 
       <form className="reviews__form" onSubmit={form.onSubmit(handleSubmit)}>
         <Input.Wrapper label="Ваше имя" withAsterisk>
-          <Input {...form.getInputProps("label")} />
+          <Input
+            placeholder="Jane Dow"
+            required
+            {...form.getInputProps("label")}
+          />
         </Input.Wrapper>
         <Input.Wrapper label="Тема отзыва" withAsterisk>
-          <Input {...form.getInputProps("description")} />
+          <Input
+            placeholder="Придумайте тему..."
+            required
+            {...form.getInputProps("description")}
+          />
         </Input.Wrapper>
         <Textarea
+          required
           {...form.getInputProps("content")}
           label="Ваш отзыв"
+          placeholder="Напишите отзыв..."
           withAsterisk
         />
-        <Button type="submit" color="dark">
+        <Button disabled={!form.isValid()} type="submit" color="dark">
           Добавить отзыв
         </Button>
       </form>

@@ -32,6 +32,7 @@ export const SearchModal: FC<SearchModalProps> = ({ open, onClose }) => {
         className="search_modal__input"
         icon={<IconSearch size={16} />}
         placeholder="Поиск услуг"
+        inputMode="search"
         radius="md"
       />
       <ul className="search_modal__list">
@@ -41,7 +42,7 @@ export const SearchModal: FC<SearchModalProps> = ({ open, onClose }) => {
           })
           .map((service) => {
             return (
-              <li>
+              <li key={service.id}>
                 <Text className="search_modal__link">
                   <Link to={`service/${service.id}`}>{service.name}</Link>
                 </Text>

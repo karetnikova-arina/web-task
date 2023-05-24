@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, SegmentedControl, Text } from "@mantine/core";
 import { Title } from "@mantine/core";
@@ -37,15 +37,18 @@ export const MainPage: FC = () => {
   const { data: categoriesData } = categoriesApi.useGetCategoriesQuery();
   const { data: servicesData } = servicesApi.useGetServicesQuery();
   const [sortType, setSortType] = useState<SortTypesEnum>(SortTypesEnum.unset);
+  const servicesContainerRef = useRef<HTMLDivElement>(null);
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
+    servicesContainerRef?.current?.scrollIntoView?.();
   };
 
   const changeSortType = () => {
     setSortType(
       sortType === SortTypesEnum.descending ? SortTypesEnum.unset : sortType + 1
     );
+    servicesContainerRef?.current?.scrollIntoView?.();
   };
 
   return (
@@ -53,7 +56,7 @@ export const MainPage: FC = () => {
       <Header />
       <main className="main__container">
         <section className="main__promo">
-          <div>
+          <div className="promo__text">
             <Title order={1}>
               Успейте побывать в <u>лучшем</u> <br /> салоне красоты Москвы
             </Title>
@@ -68,7 +71,11 @@ export const MainPage: FC = () => {
             alt="Beauty Salon"
           />
         </section>
-        <section className="main__services">
+        <section
+          className="main__services"
+          id="main__services"
+          ref={servicesContainerRef}
+        >
           <Title order={2} align="center" className="services__heading">
             Наши услуги
           </Title>
