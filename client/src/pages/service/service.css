@@ -32,12 +32,15 @@
   margin-top: 40px;
   height: calc(100dvh - 260px);
   display: flex;
+  width: 100%;
 }
 
 .service {
   display: flex;
   margin: auto 0;
   gap: 40px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .service__image {
@@ -47,7 +50,7 @@
 .service__text {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: auto 0;
 }
 
 .service__price {
@@ -58,5 +61,15 @@
 @media print {
   .print_removable {
     display: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .service {
+    flex-direction: column;
+  }
+
+  .service__image {
+    width: 100%;
   }
 }
