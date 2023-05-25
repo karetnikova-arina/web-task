@@ -44,7 +44,7 @@ export const SearchModal: FC<SearchModalProps> = ({ open, onClose }) => {
             return (
               <li key={service.id}>
                 <Text className="search_modal__link">
-                  <Link to={`service/${service.id}`}>{service.name}</Link>
+                  <Link to={`/service/${service.id}`}>{service.name}</Link>
                 </Text>
               </li>
             );

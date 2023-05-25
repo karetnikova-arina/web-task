@@ -38,10 +38,11 @@ export const MainPage: FC = () => {
   const { data: servicesData } = servicesApi.useGetServicesQuery();
   const [sortType, setSortType] = useState<SortTypesEnum>(SortTypesEnum.unset);
   const servicesContainerRef = useRef<HTMLDivElement>(null);
+  const formContainerRef = useRef<HTMLDivElement>(null);
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
-    servicesContainerRef?.current?.scrollIntoView?.();
+    servicesContainerRef?.current?.scrollIntoView?.({ block: "start" });
   };
 
   const changeSortType = () => {
@@ -49,6 +50,10 @@ export const MainPage: FC = () => {
       sortType === SortTypesEnum.descending ? SortTypesEnum.unset : sortType + 1
     );
     servicesContainerRef?.current?.scrollIntoView?.();
+  };
+
+  const handleScrollToForm = () => {
+    formContainerRef?.current?.scrollIntoView();
   };
 
   return (
@@ -61,7 +66,9 @@ export const MainPage: FC = () => {
               Успейте побывать в <u>лучшем</u> <br /> салоне красоты Москвы
             </Title>
             <Text className="promo__link">
-              <a href="#reception">Записаться!</a>
+              <Button onClick={handleScrollToForm} color="dark">
+                Записаться!
+              </Button>
             </Text>
           </div>
           <img
@@ -148,7 +155,11 @@ export const MainPage: FC = () => {
           </Title>
           <Reviews />
         </section>
-        <section className="main__services" id="reception">
+        <section
+          className="main__services"
+          id="reception"
+          ref={formContainerRef}
+        >
           <Title order={2} align="center" className="services__heading">
             Хотите записаться на прием? Сделайте это прямо <u>сейчас</u>
           </Title>
