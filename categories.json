@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "all"
+    },
+    {
+      "id": 1,
+      "name": "face"
+    },
+    {
+      "id": 2,
+      "name": "hair"
+    },
+    {
+      "id": 3,
+      "name": "body"
+    },
+    {
+      "id": 4,
+      "name": "hands"
+    },
+    {
+      "id": 5,
+      "name": "foot"
+    }
+  ]
+}
